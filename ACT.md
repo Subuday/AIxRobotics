@@ -21,7 +21,21 @@ CVAE has two components: CVAE encoder(used only for training) and CVAE decoder. 
 CVAE decoder conditions on both z and the current observations(images + joint positions) to predict the action seq. 
 
 The whole model is trained to maximise the log likelyhod of demonstration action chunk... with standart VAE objective which has two terms: a rec loss and term that reguli the encoder to a gaussian prior.??? weight the second term in lesss information transimetter in z.
-  
+
+CVAE encoder and decoder are implemented with transformers.(why?) The CVAE encoder is implemented with BERT-like trasnformer encoder.
+
+The inputs to the encoder are the current joint position and the target action seq of length k from demonst datasset. prepended by a learned "CLS" token.  After passing through the transofrmer the feature correspoinding to "[CLS]" is used to predict the mean and variance of the "style. variable" z (explain) which is then used as input to the decoder. CVAE decoder takes the current observations and z as the input and predicts the next k actions. 
+
+ResNet is used as ResNet image encoder (transformer encoder) synthesis information from different camera viewpoints joint positions, style variable and transformer decoder to implement the CVAE decoder (why res net?) the transofmer decider generates a coherent action seq. 
+
+The policy first processes the images with ResNet18 backbones with convert 480x640x3 rgb images into 15x20x512 feature maps. to preserve spatial dimension we add 2D sinusoidal position embedding to the feature seq(what does it mean?). Then is appended two more feature: the curr joint positions and "style variable" z. they are projected from their original dimensions to 512 thorugh linear laters respectively. the transformer decoder conditions on the encoder output through cross attention, where input seq is a fixed psotion embedding with dimension kx512, and the keys and values are coming from the encoder. the output of transformer decoder of k x 512 which is then down projected with an MLP into k x 14. corresponding to the predicted target joint positions for the next k steps. 
+
+L1 loss is used fore construction. 
+Use target joints positions instead of delta cause it degradates performance.
+
+80M model.
+5 hours training on RTX2080Ti GPU.
+0.01 seconds inferene time.
 
 ### Inference
 
