@@ -29,7 +29,7 @@ ACT uses a conditional variational autoencoder (CVAE) to handle non-stationary h
 The CVAE has two parts: an encoder (used only during training) and a decoder.
 ### Encoder
 The CVAE encoder predicts the mean and variance of the style variable z using current joint positions and intended actions. In the context of human demonstrations, z captures variations in speed, trajectory, or technique. For quicker training, we skip the images.
-
+![ACT Transformer Encoder](res/act_transformer_encoder.png)
 The encoder is implemented with a BERT-like transformer encoder. The inputs are "[CLS]" token, current joint positions and target actions. "[CLS]" is a special token at the start of an input sequence. It collects information about the relationships between all tokens in the sequence (the current joint positions and target actions) and is used to predict the mean and variance of the style variable z. 
 [picture]
 ### Decoder
