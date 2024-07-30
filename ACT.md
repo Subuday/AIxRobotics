@@ -22,7 +22,7 @@ To fix jerky movements, we predict actions at each timestamp using action chunki
 
 ## Training
 The training data is gathered using ALOHA, a robot arm system. This data is observations such as the current joint positions of the follower robot and image feeds from four cameras. ACT is then trained to predict the sequence of future actions based on the observations. Here, an action is defined as the target joint positions for both robot arms.
-![ALOHA](aloha.png)
+![ALOHA](res/aloha.png)
 
 ACT uses a conditional variational auto-encoder (CVAE) to handle non-stationary human demonstrations. The CVAE learns various possible ways to perform actions, rather than just one fixed way.
 
