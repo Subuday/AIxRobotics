@@ -28,16 +28,14 @@ ACT uses a conditional variational autoencoder (CVAE) to handle non-stationary h
 
 The CVAE has two parts: an encoder (used only during training) and a decoder.
 ### Encoder
-The CVAE encoder predicts the mean and variance of the style variable z using current joint positions and intended actions. In the context of human demonstrations, z captures variations in speed, trajectory, or technique. For quicker training, we skip the images.
+The CVAE encoder predicts the mean and variance of the style variable z using current joint positions and intended actions. In the context of human demonstrations, z captures variations in speed, trajectory, technique, etc. For quicker training, we skip the images.
 ![ACT Transformer Encoder](res/act_transformer_encoder.png)
 
-The encoder is implemented with a BERT-like transformer encoder. The inputs are "[CLS]" token, current joint positions and target actions. "[CLS]" is a special token at the start of an input sequence. It collects information about the relationships between all tokens in the sequence (the current joint positions and target actions) and is used to predict the mean and variance of the style variable z. 
-[picture]
+The encoder is implemented with a BERT-like transformer. The inputs are "[CLS]" token, current joint positions and target actions. "[CLS]" is a special token at the start of an input sequence. It collects information about the relationships between all tokens in the sequence (the current joint positions and target actions) and is used to predict the mean and variance of the style variable z.
 ### Decoder
 The CVAE decoder uses the latent variable z, the images and the joint positions to predict the actions.
-
-The decoder is implemented with ResNet image encoder, a transformer encoder, and a transformer decoder.ResNet processes images into features, which, along with current joint positions and the latent variable z, are input to the transformer encoder. The output is the encoded data containing relationships between these tokens. The transformer decoder uses this data to make predictions of next actions.
-[picture]
+![ACT Transformer Decoder](res/act_transformer_decoder.png)
+The decoder is implemented with ResNet image encoder, a transformer encoder, and a transformer decoder. ResNet processes images into features, which, along with current joint positions and the latent variable z, are input to the transformer encoder. The output is the encoded data containing relationships between these tokens. The transformer decoder uses this data to make predictions of next actions.
 ### Loss
 The VAE training objective typically includes two main components:
 **Reconstruction Loss:** the data reconstructed from the latent variable z is as close as possible to the original data.
