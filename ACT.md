@@ -27,7 +27,7 @@ The training data is gathered using ALOHA, a robot arm system. This data is obse
 ACT uses a conditional variational autoencoder (CVAE) to handle non-stationary human demonstrations. The CVAE learns various possible ways to perform actions, rather than just one fixed way.
 
 The CVAE has two parts: an encoder (used only during training) and a decoder.
-## Encoder
+### Encoder
 The CVAE encoder predicts the mean and variance of the style variable z using current joint positions and intended actions. In the context of human demonstrations, z captures variations in speed, trajectory, or technique. For quicker training, we skip the images.
 
 The encoder is implemented with a BERT-like transformer encoder. The inputs are "[CLS]" token, current joint positions and target actions. "[CLS]" is a special token at the start of an input sequence. It collects information about the relationships between all tokens in the sequence (the current joint positions and target actions) and is used to predict the mean and variance of the style variable z. 
@@ -44,7 +44,7 @@ The VAE training objective typically includes two main components:
 [picture of formula?]
 
 ## Inference
-WIP
+**WIP**
 Only decoder is used.
 At inference time, we set z to be the mean of prior distribution e.e zero to deterministically decoder (explain this)
 add this Use target joints positions instead of delta cause it degradates performance
