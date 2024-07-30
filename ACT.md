@@ -1,21 +1,20 @@
 # ACT
 
-Today we'll explore the neural-network approach called Action Chunking with Transformers (ACT). This imitation learning algorithm can achieve a success rate of around 90% in real-world tasks with just 10 minutes of demonstration data
+Today we'll explore the neural-network approach called Action Chunking with Transformers (ACT). This imitation learning algorithm can achieve a success rate of around 90% in real-world tasks with just 10 minutes of demonstration data.
 ## Imitation Learning
 Imitation learning is a technique where robots learn to perform tasks by mimicking human demonstrations.
 [insert video images]
 
-##### Imitation Learning Issues
+##### Challenges
 Previous imitation learning algorithms encounter significant challenges by predicting only one action in time.
-**Compounding errors:**  imagine a robot makes a small mistake at the start. Because of this, its next decision is based on an already slightly wrong situation, leading to another mistake. As it continues, each new decision is based on an increasingly incorrect scenario, causing these mistakes to add up. Over time, this can result in the robot's behaviour being significantly off from what was intended.
-**Non-stationary human demonstrations**: describe that a person can go in diff ways.
-Human actions can vary greatly when accomplishing the same task
+- **Compounding errors:**  imagine a robot makes a small mistake at the start. Because of this, its next decision is based on an already slightly wrong situation, leading to another mistake. As it continues, each new decision is based on an increasingly incorrect scenario, causing these mistakes to add up. Over time, this can result in the robot's behaviour being significantly off from what was intended.
+- **Non-stationary human demonstrations**: describe that a person can go in diff ways. Human actions can vary greatly when accomplishing the same task
 
-##### Imitation Learning Solutions
-Action Chunking
-Action chunking helps prevent error accumulation by predicting several future actions at once, instead of one at a time. However, this can lead to jerky movements since the robot doesn't continuously adjust its behavior based on real-time feedback at every timestamp.
+##### Solutions
+###### Action Chunking
+Action chunking helps prevent error accumulation by predicting several future actions at once, instead of one at a time. However, this can lead to jerky movements since the robot doesn't continuously adjust its behaviour based on real-time feedback at every timestamp.
 
-Temporal ensemble
+###### Temporal ensemble
 To fix jerky movements, we predict actions at each timestamp using action chunking. This gives us multiple action predictions for future timestamps. We can combine these predictions using temporal ensemble, which averages the actions.
 [explain math behind weighting average]
 [animation]
