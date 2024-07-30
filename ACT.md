@@ -39,9 +39,11 @@ The CVAE decoder uses the latent variable z, the images and the joint positions 
 The decoder is implemented with ResNet image encoder, a transformer encoder, and a transformer decoder. ResNet processes images into features, which, along with current joint positions and the latent variable z, are input to the transformer encoder. The output is the encoded data containing relationships between these tokens. The transformer decoder uses this data to make predictions of next actions.
 ### Loss
 The VAE training objective typically includes two main components:
-**Reconstruction Loss:** the data reconstructed from the latent variable z is as close as possible to the original data.
-**KL Divergence:** the distribution of the latent variable z approximates a Gaussian prior.
-[picture of formula?]
+- **Reconstruction Loss:** the data reconstructed from the latent variable z is as close as possible to the original data.
+- **KL Divergence:** the distribution of the latent variable z approximates a Gaussian prior.
+$$
+L = L_{reconst} + L_{reg}
+$$
 
 ## Inference
 **WIP**
