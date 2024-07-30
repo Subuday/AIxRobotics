@@ -42,7 +42,7 @@ The VAE training objective typically includes two main components:
 - **Reconstruction Loss:** the data reconstructed from the latent variable z is as close as possible to the original data.
 - **KL Divergence:** the distribution of the latent variable z approximates a Gaussian prior.
 
-$$L = L_{reconst} + L_{reg}$$
+$$\Huge L = L_{reconst} + L_{reg}$$
 
 ## Inference
 **WIP**
