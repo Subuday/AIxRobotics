@@ -12,13 +12,12 @@ Previous imitation learning algorithms encounter significant challenges by predi
 
 ##### Solutions
 ###### Action Chunking
-Action chunking helps prevent error accumulation by predicting several future actions at once, instead of one at a time. However, this can lead to jerky movements since the robot doesn't continuously adjust its behaviour based on real-time feedback at every timestamp.
+Helps prevent error accumulation by predicting several future actions at once, instead of one at a time. However, this can lead to jerky movements since the robot doesn't continuously adjust its behaviour based on real-time feedback at every timestamp.
 ![Action Chunking](res/action_chunking.gif)
 
-###### Temporal ensemble
+###### Temporal Ensemble
 To fix jerky movements, we predict actions at each timestamp using action chunking. This gives us multiple action predictions for future timestamps. We can combine these predictions using temporal ensemble, which averages the actions.
-[explain math behind weighting average]
-[animation]
+![Temporal Ensemble](res/temporal_ensemble.gif)
 
 ## Training
 The training data is gathered using ALOHA, a robot arm system. This data is observations such as the current joint positions of the follower robot and image feeds from four cameras. ACT is then trained to predict the sequence of future actions based on the observations. Here, an action is defined as the target joint positions for both robot arms.
