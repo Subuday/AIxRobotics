@@ -6,13 +6,14 @@ Imitation learning is a technique where robots learn to perform tasks by mimicki
 [insert video images]
 
 ##### Challenges
-Previous imitation learning algorithms encounter significant challenges by predicting only one action in time.
+Previous imitation learning algorithms encounter significant challenges by predicting only one action in time:
 - **Compounding errors:**  imagine a robot makes a small mistake at the start. Because of this, its next decision is based on an already slightly wrong situation, leading to another mistake. As it continues, each new decision is based on an increasingly incorrect scenario, causing these mistakes to add up. Over time, this can result in the robot's behaviour being significantly off from what was intended.
 - **Non-stationary human demonstrations**: describe that a person can go in diff ways. Human actions can vary greatly when accomplishing the same task
 
 ##### Solutions
 ###### Action Chunking
 Action chunking helps prevent error accumulation by predicting several future actions at once, instead of one at a time. However, this can lead to jerky movements since the robot doesn't continuously adjust its behaviour based on real-time feedback at every timestamp.
+![Action Chunking](res/action_chunking.gif)
 
 ###### Temporal ensemble
 To fix jerky movements, we predict actions at each timestamp using action chunking. This gives us multiple action predictions for future timestamps. We can combine these predictions using temporal ensemble, which averages the actions.
