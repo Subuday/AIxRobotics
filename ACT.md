@@ -3,7 +3,7 @@
 Today we'll explore the neural-network approach called Action Chunking with Transformers (ACT). This imitation learning algorithm can achieve a success rate of around 90% in real-world tasks with just 10 minutes of demonstration data.
 ## Imitation Learning
 Imitation learning is a technique where robots learn to perform tasks by mimicking human demonstrations.
-[insert video images]
+![Imitation Learning](res/imitation_learning.png)
 
 ##### Challenges
 Previous imitation learning algorithms encounter significant challenges by predicting only one action in time:
