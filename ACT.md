@@ -8,7 +8,7 @@ Imitation learning is a technique where robots learn to perform tasks by mimicki
 ##### Challenges
 Previous imitation learning algorithms encounter significant challenges by predicting only one action in time:
 - **Compounding errors:**  imagine a robot makes a small mistake at the start. Because of this, its next decision is based on an already slightly wrong situation, leading to another mistake. As it continues, each new decision is based on an increasingly incorrect scenario, causing these mistakes to add up. Over time, this can result in the robot's behaviour being significantly off from what was intended.
-- **Non-stationary human demonstrations**: describe that a person can go in diff ways. Human actions can vary greatly when accomplishing the same task
+- **Non-stationary human demonstrations**: imagine a person trying to do the same task in different ways. Human actions can vary a lot while accomplishing identical tasks.
 
 ##### Solutions
 ###### Action Chunking
@@ -45,6 +45,11 @@ $$\Huge L = L_{reconst} + L_{reg}$$
 
 ## Inference
 **WIP**
+
 Only decoder is used.
 At inference time, we set z to be the mean of prior distribution e.e zero to deterministically decoder (explain this)
 add this Use target joints positions instead of delta cause it degradates performance
+
+## Thanks
+Thanks to the authors of the [paper](https://arxiv.org/abs/2304.13705).
+Thanks to the [LeRobot](https://github.com/huggingface/lerobot/tree/main) team.
