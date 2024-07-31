@@ -52,4 +52,5 @@ add this Use target joints positions instead of delta cause it degradates perfor
 
 ## Thanks
 Thanks to the authors of the [paper](https://arxiv.org/abs/2304.13705).
+
 Thanks to the [LeRobot](https://github.com/huggingface/lerobot/tree/main) team.
